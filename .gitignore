@@ -2,7 +2,9 @@
 .vs/
 bin/
 bin-int/
-x64/
 
 # Files
+*.sln
 *.user
+*.vcxproj
+*.vcxproj.filters
