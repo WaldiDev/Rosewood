@@ -26,6 +26,7 @@ project "Rosewood"
 
 	includedirs
 	{
+		"%{prj.name}/Source",
 		"%{prj.name}/Vendor/spdlog/include"
 	}
 
