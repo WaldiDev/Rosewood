@@ -2,9 +2,6 @@
 
 #include "Rosewood/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace rw
 {
 	// Events are currently blocking

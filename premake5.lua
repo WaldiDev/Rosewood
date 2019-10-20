@@ -18,6 +18,9 @@ project "Rosewood"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "Pch.h"
+	pchsource "%{prj.name}/Source/Pch.cpp"
+
 	files
 	{
 		"%{prj.name}/Source/**.h",
