@@ -4,13 +4,14 @@
 #include "Rosewood/EventSystem/Event.h"
 #include "Rosewood/Log.h"
 #include "EventSystem/ApplicationEvent.h"
+#include "Window.h"
 
 namespace rw
 {
 
 	Application::Application()
 	{
-
+		mWindow = Window::RWCreateWindow(WindowDefinition());
 	}
 
 

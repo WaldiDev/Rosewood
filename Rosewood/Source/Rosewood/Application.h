@@ -4,6 +4,8 @@
 
 namespace rw
 {
+	class Window;
+
 	class ROSEWOOD_API Application
 	{
 	public:
@@ -13,6 +15,8 @@ namespace rw
 
 		void Run();
 
+	private:
+		Window* mWindow;
 	};
 
 	// Should be defined on client
