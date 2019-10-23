@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Rosewood/Core.h"
-#include "Rosewood/EventSystem/Event.h"
 
 namespace rw
 {
@@ -36,6 +35,8 @@ namespace rw
 		unsigned int Width;
 		unsigned int Height;		
 	};
+
+	class Event;
 
 	class ROSEWOOD_API Window
 	{

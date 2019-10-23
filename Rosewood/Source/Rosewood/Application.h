@@ -4,6 +4,8 @@
 
 namespace rw
 {
+	class Event;
+	class WindowCloseEvent;
 	class Window;
 
 	class ROSEWOOD_API Application
@@ -16,7 +18,13 @@ namespace rw
 		void Run();
 
 	private:
+		void OnEvent(Event& event);
+
+		bool OnWindowClose(const WindowCloseEvent& event);
+
 		Window* mWindow;
+
+		bool mIsRunning;
 	};
 
 	// Should be defined on client
