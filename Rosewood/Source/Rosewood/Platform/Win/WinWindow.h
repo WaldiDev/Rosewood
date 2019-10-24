@@ -19,6 +19,8 @@ namespace rw
 		virtual unsigned int GetWidth() const override { return mDefinition.Width; }
 		virtual unsigned int GetHeight() const override { return mDefinition.Height; }
 
+		virtual void* GetHandle() const override { return mHandle; }
+
 		virtual void SetEventCallback(const EventCallbackFn& eventCallback) override { mEventCallback = eventCallback; }
 
 		virtual void SetIsVSyncEnabled(bool isVSyncEnabled) override;

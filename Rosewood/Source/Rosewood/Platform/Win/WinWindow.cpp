@@ -89,6 +89,7 @@ namespace rw
 			return handle;
 		}
 	}
+
 	Window* Window::RWCreateWindow(const WindowDefinition& windowDefinition)
 	{
 		return new WinWindow(windowDefinition);

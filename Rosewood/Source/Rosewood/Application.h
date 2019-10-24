@@ -8,6 +8,7 @@ namespace rw
 	class Event;
 	class WindowCloseEvent;
 	class Window;
+	class Video;
 	class Layer;
 
 	class ROSEWOOD_API Application
@@ -28,6 +29,8 @@ namespace rw
 		bool OnWindowClose(const WindowCloseEvent& event);
 
 		Window* mWindow;
+
+		Video* mVideo;
 
 		bool mIsRunning;
 

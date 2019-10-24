@@ -6,21 +6,27 @@
 #include "Rosewood/Log.h"
 #include "Rosewood/Layer.h"
 #include "Rosewood/Window.h"
+#include "Rosewood/Video.h"
 
 namespace rw
 {
 
 	Application::Application()
 		: mWindow(nullptr)
+		, mVideo(nullptr)
 		, mIsRunning(false)
 		, mLayerStack()
 	{
 		mWindow = Window::RWCreateWindow(WindowDefinition());
 		mWindow->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
+
+		mVideo = Video::CreateVideo(*mWindow);
 	}
 
 	Application::~Application()
 	{
+		delete mVideo;
+		delete mWindow;
 	}
 
 	void Application::Run()
@@ -35,6 +41,8 @@ namespace rw
 			{
 				layer->OnUpdate();
 			}
+
+			mVideo->OnRender();
 		}
 	}
 
@@ -56,8 +64,10 @@ namespace rw
 		dispatcher.Dispatch<WindowCloseEvent>(std::bind(&Application::OnWindowClose, this, std::placeholders::_1));
 		
 		// forward events to layers in reversed order, so overlays will recive events first
-		for (LayerStackIterater layerIter = mLayerStack.end(); layerIter != mLayerStack.begin(); --layerIter)
+		LayerStackIterater layerIter = mLayerStack.end();
+		while (layerIter != mLayerStack.begin())
 		{
+			--layerIter;
 			(*layerIter)->OnEvent(event);
 			if (event.GetIsHandled())
 			{
