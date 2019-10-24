@@ -51,14 +51,17 @@ project "Rosewood"
 
 	filter "configurations:Debug"
 		defines "RW_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "RW_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Shipping"
 		defines "RW_SHIPPING"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -98,12 +101,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "RW_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "RW_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Shipping"
 		defines "RW_SHIPPING"
+		buildoptions "/MD"
 		optimize "On"

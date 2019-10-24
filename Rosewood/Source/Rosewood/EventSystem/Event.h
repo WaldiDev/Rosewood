@@ -51,13 +51,15 @@ namespace rw
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName();  }
 
-		inline bool IsInCategory(EventCategory category) const
+		bool GetIsHandled() const { return mIsHandled; }
+
+		bool IsInCategory(EventCategory category) const
 		{
 			return GetCategoryFlags()& category;
 		}
 
 	protected:
-		bool mHandled = false;
+		bool mIsHandled = false;
 
 	};
 
@@ -76,7 +78,7 @@ namespace rw
 		{
 			if (mEvent.GetEventType() == T::GetStaticType())
 			{
-				mEvent.mHandled = func(*(T*)&mEvent);
+				mEvent.mIsHandled = func(*(T*)&mEvent);
 				return true;
 			}
 

@@ -1,12 +1,14 @@
 #pragma once
 
-#include "Core.h"
+#include "Rosewood/Core.h"
+#include "Rosewood/LayerStack.h"
 
 namespace rw
 {
 	class Event;
 	class WindowCloseEvent;
 	class Window;
+	class Layer;
 
 	class ROSEWOOD_API Application
 	{
@@ -17,6 +19,9 @@ namespace rw
 
 		void Run();
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+
 	private:
 		void OnEvent(Event& event);
 
@@ -25,6 +30,8 @@ namespace rw
 		Window* mWindow;
 
 		bool mIsRunning;
+
+		LayerStack mLayerStack;
 	};
 
 	// Should be defined on client

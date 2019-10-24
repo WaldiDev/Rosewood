@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "Rosewood/Application.h"
+#include "Rosewood/Layer.h"
 #include "Rosewood/Log.h"
 
 // ----Entry Point-------------------------
