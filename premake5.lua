@@ -1,5 +1,6 @@
 workspace "Rosewood"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -14,6 +15,7 @@ project "Rosewood"
 	location "Rosewood"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -46,28 +48,29 @@ project "Rosewood"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "RW_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "RW_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"		
 		optimize "On"
 
 	filter "configurations:Shipping"
 		defines "RW_SHIPPING"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -91,7 +94,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -101,15 +103,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "RW_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"		
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "RW_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"		
 		optimize "On"
 
 	filter "configurations:Shipping"
 		defines "RW_SHIPPING"
-		buildoptions "/MD"
+		runtime "Release"		
 		optimize "On"
