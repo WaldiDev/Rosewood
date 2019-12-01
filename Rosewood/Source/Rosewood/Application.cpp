@@ -7,6 +7,7 @@
 #include "Rosewood/Layer.h"
 #include "Rosewood/Window.h"
 #include "Rosewood/Video.h"
+#include "Rosewood/InputSystem/InputMapper.h"
 
 namespace rw
 {
@@ -17,10 +18,21 @@ namespace rw
 		, mIsRunning(false)
 		, mLayerStack()
 	{
+
+		mInputMapper = new InputMapper();
+
 		mWindow = Window::RWCreateWindow(WindowDefinition());
 		mWindow->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
+		mWindow->SetInputMapper(mInputMapper);
 
 		mVideo = Video::CreateVideo(*mWindow);
+
+		mInputMapper->AddActionNameToKeyBinding("TestAction", { KeyboardKey(VirtualKey::RW_VK_Q), KeyboardKey(VirtualKey::RW_VK_W), KeyboardKey(VirtualKey::RW_VK_E) });
+		mInputMapper->AddActionNameToKeyBinding("AnotherTestAction", { { KeyboardKey(VirtualKey::RW_VK_E) } });
+
+		InputContext& myContext = mInputMapper->CreateNewContext();		
+		myContext.AddBinding("TestAction", InputState::Repeated, std::bind(&Application::TestAction, this));
+		myContext.AddBinding("AnotherTestAction", InputState::Pressed, std::bind(&Application::AnotherTestAction, this));
 	}
 
 	Application::~Application()
@@ -36,6 +48,7 @@ namespace rw
 		while (mIsRunning)
 		{
 			mWindow->OnUpdate();
+			mInputMapper->Dispatch();
 
 			for (Layer* layer : mLayerStack)
 			{
@@ -80,6 +93,16 @@ namespace rw
 	{
 		mIsRunning = false;
 		return true;
+	}
+
+	void Application::TestAction()
+	{
+		RW_CORE_INFO("TestAction");
+	}
+
+	void Application::AnotherTestAction()
+	{
+		RW_CORE_INFO("AnotherTestAction");
 	}
 
 }

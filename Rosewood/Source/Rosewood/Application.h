@@ -10,6 +10,7 @@ namespace rw
 	class Window;
 	class Video;
 	class Layer;
+	class InputMapper;
 
 	class ROSEWOOD_API Application
 	{
@@ -28,9 +29,15 @@ namespace rw
 
 		bool OnWindowClose(const WindowCloseEvent& event);
 
+		void TestAction();
+
+		void AnotherTestAction();
+
 		Window* mWindow;
 
 		Video* mVideo;
+
+		InputMapper* mInputMapper;
 
 		bool mIsRunning;
 

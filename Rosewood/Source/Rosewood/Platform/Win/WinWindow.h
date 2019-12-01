@@ -8,6 +8,8 @@ typedef HWND__* HWND;
 
 namespace rw
 {
+	class InputMapper;
+
 	class WinWindow : public Window
 	{
 	public:
@@ -22,15 +24,18 @@ namespace rw
 		virtual void* GetHandle() const override { return mHandle; }
 
 		virtual void SetEventCallback(const EventCallbackFn& eventCallback) override { mEventCallback = eventCallback; }
+		virtual void SetInputMapper(InputMapper* inputMapper) override { mInputMapper = inputMapper; }
 
 		virtual void SetIsVSyncEnabled(bool isVSyncEnabled) override;
 		virtual bool GetIsVSyncEnabled() const override;
 
-	private:
+	private:		
 		WindowDefinition mDefinition;
 
 		HWND mHandle;
 
 		EventCallbackFn mEventCallback;
+
+		InputMapper* mInputMapper;
 	};
 }

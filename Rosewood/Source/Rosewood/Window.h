@@ -37,6 +37,7 @@ namespace rw
 	};
 
 	class Event;
+	class InputMapper;
 
 	class ROSEWOOD_API Window
 	{
@@ -52,6 +53,7 @@ namespace rw
 		virtual void* GetHandle() const = 0;
 
 		virtual void SetEventCallback(const EventCallbackFn& eventCallback) = 0;
+		virtual void SetInputMapper(InputMapper* inputMapper) = 0;
 
 		virtual void SetIsVSyncEnabled(bool isVSyncEnabled) = 0;
 		virtual bool GetIsVSyncEnabled() const = 0;
