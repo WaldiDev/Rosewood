@@ -6,7 +6,7 @@ namespace rw
 {
 	class Window;
 
-	class ROSEWOOD_API Video
+	class Video
 	{
 	public:
 		virtual ~Video() {}

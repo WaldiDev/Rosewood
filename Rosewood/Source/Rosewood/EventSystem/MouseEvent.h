@@ -4,7 +4,7 @@
 
 namespace rw
 {
-	class ROSEWOOD_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -30,7 +30,7 @@ namespace rw
 		float mMouseY;
 	};
 
-	class ROSEWOOD_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
@@ -56,7 +56,7 @@ namespace rw
 		float mOffsetY;
 	};
 
-	class ROSEWOOD_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return mButton; }
@@ -71,7 +71,7 @@ namespace rw
 		int mButton;
 	};
 
-	class ROSEWOOD_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -88,7 +88,7 @@ namespace rw
 		EVENT_CLASS_TYPE(MouseButtonPressed);
 	};
 
-	class ROSEWOOD_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

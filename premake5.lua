@@ -13,9 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 project "Rosewood"
 	location "Rosewood"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "Off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -35,42 +36,35 @@ project "Rosewood"
 		"%{prj.name}/Vendor/spdlog/include"
 	}
 
-	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
+	filter "system:windows"		
 		systemversion "latest"
 
 		defines
 		{
-			"RW_PLATFORM_WINDOWS",
-			"RW_BUILD_DLL"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
+			"RW_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
 		defines "RW_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "RW_RELEASE"
 		runtime "Release"		
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Shipping"
 		defines "RW_SHIPPING"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "Off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -92,8 +86,7 @@ project "Sandbox"
 		"Rosewood"
 	}
 
-	filter "system:windows"
-		cppdialect "C++17"
+	filter "system:windows"		
 		systemversion "latest"
 
 		defines
@@ -104,14 +97,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "RW_DEBUG"
 		runtime "Debug"		
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "RW_RELEASE"
 		runtime "Release"		
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Shipping"
 		defines "RW_SHIPPING"
 		runtime "Release"		
-		optimize "On"
+		optimize "on"

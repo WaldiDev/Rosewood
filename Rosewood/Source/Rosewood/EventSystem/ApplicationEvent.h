@@ -4,7 +4,7 @@
 
 namespace rw
 {
-	class ROSEWOOD_API WindowResizeEvent : public Event
+	class WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
@@ -30,7 +30,7 @@ namespace rw
 		unsigned int mHeight;
 	};
 
-	class ROSEWOOD_API WindowCloseEvent : public Event
+	class WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent()

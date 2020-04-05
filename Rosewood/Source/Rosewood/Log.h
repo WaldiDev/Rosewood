@@ -6,7 +6,7 @@
 
 namespace rw
 {
-	class ROSEWOOD_API Log
+	class Log
 	{
 	public:
 		static void Init();

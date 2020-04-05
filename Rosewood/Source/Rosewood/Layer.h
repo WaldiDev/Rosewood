@@ -8,7 +8,7 @@ namespace rw
 {
 	class Event;
 
-	class ROSEWOOD_API Layer
+	class Layer
 	{
 	public:
 		explicit Layer(const std::string& name)

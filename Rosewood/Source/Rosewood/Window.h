@@ -33,13 +33,13 @@ namespace rw
 		WindowType Type;
 		std::wstring Title;
 		unsigned int Width;
-		unsigned int Height;		
+		unsigned int Height;
 	};
 
 	class Event;
 	class InputMapper;
 
-	class ROSEWOOD_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;

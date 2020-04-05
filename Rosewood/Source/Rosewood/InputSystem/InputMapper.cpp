@@ -125,6 +125,6 @@ namespace rw
 		for (const InputBinding* binding : mCurrentStates)
 		{
 			binding->mCallback();
-		}		
+		}
 	}
 }

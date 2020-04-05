@@ -9,7 +9,7 @@ namespace rw
 	class Layer;
 	using LayerStackIterater = std::vector<Layer*>::iterator;
 
-	class ROSEWOOD_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

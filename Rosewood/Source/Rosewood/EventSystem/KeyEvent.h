@@ -4,9 +4,9 @@
 
 namespace rw
 {
-	class ROSEWOOD_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
-	public:		
+	public:
 		inline int GetKeyCode() const { return mKeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput);
@@ -19,7 +19,7 @@ namespace rw
 		int mKeyCode;
 	};
 
-	class ROSEWOOD_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keyCode, int repeatCount)
@@ -42,7 +42,7 @@ namespace rw
 		int mRepeatCount;
 	};
 
-	class ROSEWOOD_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keyCode)

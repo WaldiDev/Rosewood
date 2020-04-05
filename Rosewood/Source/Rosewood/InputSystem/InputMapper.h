@@ -46,7 +46,7 @@ namespace rw
 		KeyLookupMap mKeyLookupTable;
 
 		std::set<const InputBinding*> mCurrentActions;
-		std::set<const InputBinding*> mCurrentStates;		
+		std::set<const InputBinding*> mCurrentStates;
 
 		bool mKeyState[255];
 	};

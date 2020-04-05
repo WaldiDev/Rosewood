@@ -12,7 +12,7 @@ namespace rw
 	class Layer;
 	class InputMapper;
 
-	class ROSEWOOD_API Application
+	class Application
 	{
 	public:
 		Application();
