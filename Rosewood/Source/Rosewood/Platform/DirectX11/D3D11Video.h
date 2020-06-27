@@ -24,7 +24,10 @@ namespace rw
 		explicit D3D11Video(const Window& window);
 		virtual ~D3D11Video();
 		
-		virtual void OnRender() override;
+		virtual void SetClearColor(unsigned short red, unsigned short green, unsigned short blue) override;
+
+		virtual void BeginRender() override;
+		virtual void EndRender() override;
 
 	private:
 		const Window& mWindow;
@@ -34,6 +37,8 @@ namespace rw
 		IDXGISwapChain1* mSwapChain1;
 		ID3D11RenderTargetView* mBackBuffer;
 		ID3D11BlendState* mBlendState;
+
+		float mClearColor[4];
 
 #ifdef RW_DEBUG
 		ID3D11Debug* mDebug;

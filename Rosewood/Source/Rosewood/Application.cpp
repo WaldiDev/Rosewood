@@ -55,7 +55,11 @@ namespace rw
 				layer->OnUpdate();
 			}
 
-			mVideo->OnRender();
+			mVideo->BeginRender();
+
+			// Start rendering objects here
+
+			mVideo->EndRender();
 		}
 	}
 

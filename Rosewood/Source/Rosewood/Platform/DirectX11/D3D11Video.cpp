@@ -156,8 +156,9 @@ namespace rw
 		, mSwapChain1(nullptr)
 		, mBackBuffer(nullptr)
 		, mBlendState(nullptr)
+		, mClearColor{ 0.1f, 0.1f, 0.1f, 1.0f }
 #ifdef RW_DEBUG
-		,mDebug(nullptr)
+		, mDebug(nullptr)
 		, mInfoQueue(nullptr)
 #endif
 	{
@@ -202,7 +203,23 @@ namespace rw
 		SAFE_RELEASE(mDevice);
 	}
 
-	void D3D11Video::OnRender()
+	void D3D11Video::SetClearColor(unsigned short red, unsigned short green, unsigned short blue)
 	{
+		mClearColor[0] = red / 255.0f;
+		mClearColor[1] = green / 255.0f;
+		mClearColor[2] = blue / 255.0f;
+		mClearColor[3] = 1.0f;
 	}
+
+	void D3D11Video::BeginRender()
+	{
+		// Clear the back buffer.
+		mDeviceContext1->ClearRenderTargetView(mBackBuffer, mClearColor);
+	}
+
+	void D3D11Video::EndRender()
+	{
+		mSwapChain1->Present(1, 0);
+	}
+
 }

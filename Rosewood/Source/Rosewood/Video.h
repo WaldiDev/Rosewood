@@ -11,7 +11,10 @@ namespace rw
 	public:
 		virtual ~Video() {}
 
-		virtual void OnRender() = 0;
+		virtual void SetClearColor(unsigned short red, unsigned short green, unsigned short blue) = 0;
+
+		virtual void BeginRender() = 0;
+		virtual void EndRender() = 0;
 
 		static Video* CreateVideo(const Window& window);
 	};

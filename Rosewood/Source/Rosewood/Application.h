@@ -42,6 +42,10 @@ namespace rw
 		bool mIsRunning;
 
 		LayerStack mLayerStack;
+
+		unsigned int mVertexArray;
+		unsigned int mVertexBuffer;
+		unsigned int mIndexBuffer;
 	};
 
 	// Should be defined on client
